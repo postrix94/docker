@@ -10,24 +10,27 @@ services:
       - ./src/:/var/www/html
     ports:
       - "80:80"
-#  node:
+    networks:
+      my_network:
 
-#    image: node
-#    container_name: nodejs
-##    build:
-##      context: './node'
-##      dockerfile: Dockerfile
-#    command:
-#      - node app.js
-#    volumes:
-#      - ./src/:/var/www/html
+
+  node:
+    container_name: nodejs
+    build:
+      context: './node'
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/:/var/www/html
+    networks:
+      my_network:
+
 
 
 
 
 
 #
-#
-#networks:
-#  my_network:
-#    driver: bridge
+
+networks:
+  my_network:
+    driver: bridge

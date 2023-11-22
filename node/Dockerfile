@@ -1,3 +1,9 @@
 FROM node
 
-RUN apt update && apt install npm
+WORKDIR /var/www/html
+
+RUN npm i nodemon
+
+COPY ./ ./
+
+CMD ["nodemon", "app.js --watch"]
